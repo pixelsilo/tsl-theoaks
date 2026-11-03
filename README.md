@@ -6,7 +6,7 @@ Forked from `pixelsilo/tsl-3` at commit `a67876e` on 3 Nov 2026, so that The Oak
 
 Files are plain scripts with no build step. They are served by jsDelivr, pinned to a git tag or commit.
 
-**Live now:** commit `309e7bc` (tag `v1.0.1`). jsDelivr isn't resolving this repo's tags yet (it cached a 404 before the first tag existed), so releases are pinned by short commit hash, which is just as immutable. Switch to tag URLs once `https://cdn.jsdelivr.net/gh/pixelsilo/tsl-the-oaks@v1.0.1/js/core.js` returns 200.
+**Live now:** tag `v1.0.1`. The repo was renamed from `tsl-the-oaks` to `tsl-theoaks` on 3 Nov 2026, because jsDelivr had cached a "no versions" result for the old name. Always use the `tsl-theoaks` URLs.
 
 ## Files
 
@@ -29,7 +29,7 @@ Files are plain scripts with no build step. They are served by jsDelivr, pinned 
 
 1. Edit the files, commit and push.
 2. Tag the release: `git tag -a v1.0.1 -m "what changed"` then `git push origin v1.0.1`.
-3. Check that `https://cdn.jsdelivr.net/gh/pixelsilo/tsl-the-oaks@v1.0.1/js/block-pins.js` returns the new code.
+3. Check that `https://cdn.jsdelivr.net/gh/pixelsilo/tsl-theoaks@v1.0.1/js/block-pins.js` returns the new code.
 4. Change the version in the Webflow site head and footer, and in the Area Map page footer, then publish.
 
 Never move or re-push an existing tag, because jsDelivr caches tagged files permanently. To roll back, set the version back to the previous tag and republish.
