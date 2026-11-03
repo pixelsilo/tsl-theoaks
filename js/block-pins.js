@@ -1,14 +1,10 @@
 //--- APARTMENT BLOCK PINS
-// Turns the wide "Block 15-23" map pin into two status-coloured circles joined
-// by a dash: (15)–(23). Colour comes from the pin's block-status attribute,
-// bound in Webflow to the Apartment Block's Availability slug.
+// Turns the wide "Block 15-23" map pin into one status-coloured pill reading
+// "15–23". Colour comes from the pin's block-status attribute, bound in
+// Webflow to the Apartment Block's Availability slug.
 (() => {
   const PIN_SEL = '.pin.wide';
   const RANGE = /(\d+)\s*[-–]\s*(\d+)/;
-
-  const circle = (n, status) =>
-    `<span class="block-pin_circle"><span class="pin-text${status ? '' : ' pin-text_var1'}">${n}</span>` +
-    `<span class="availability_dot ${status}"></span></span>`;
 
   const convert = (pin) => {
     const label = (pin.querySelector('.pin-text') || pin).textContent.trim();
@@ -21,9 +17,8 @@
     pin.classList.add('block-pin');
     pin.setAttribute('aria-label', label);
     pin.innerHTML =
-      circle(m[1], status) +
-      `<span class="block-pin_dash"><span class="availability_dot ${status}"></span></span>` +
-      circle(m[2], status);
+      `<span class="pin-text${status ? '' : ' pin-text_var1'}">${m[1]}–${m[2]}</span>` +
+      `<span class="availability_dot ${status}"></span>`;
   };
 
   // Converted pins lose .wide, so a rescan never touches them twice

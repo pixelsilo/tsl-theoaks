@@ -14,7 +14,7 @@ Files are plain scripts with no build step. They are served by jsDelivr, pinned 
 |---|---|---|
 | `css/styles.css` | All pages (site head) | Map tooltip and block pin styles |
 | `js/panzoom-map.js` | All pages (site footer) | Site plan pan/zoom, map pins built from the CMS lists, tooltips |
-| `js/block-pins.js` | All pages (site footer) | Renders apartment block pins as (15)–(23) circles coloured by the block's `block-status` |
+| `js/block-pins.js` | All pages (site footer) | Renders apartment block pins as one "15–23" pill coloured by the block's `block-status` |
 | `js/navbar.js` | All pages | Nav behaviour |
 | `js/compare.js` | All pages | Compare plots |
 | `js/core.js` | All pages | 3D Vista relopen, price formatting, form success messages |
