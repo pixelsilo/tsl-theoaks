@@ -6,7 +6,7 @@ Forked from `pixelsilo/tsl-3` at commit `a67876e` on 3 Nov 2026, so that The Oak
 
 Files are plain scripts with no build step. They are served by jsDelivr, pinned to a git tag or commit.
 
-**Current release:** tag `v1.2.0` (staging; live is v1.1.1 until published). The repo was renamed from `tsl-the-oaks` to `tsl-theoaks` on 3 Nov 2026, because jsDelivr had cached a "no versions" result for the old name. Always use the `tsl-theoaks` URLs.
+**Live now:** tag `v1.2.0`. The repo was renamed from `tsl-the-oaks` to `tsl-theoaks` on 3 Nov 2026, because jsDelivr had cached a "no versions" result for the old name. Always use the `tsl-theoaks` URLs.
 
 ## Files
 
