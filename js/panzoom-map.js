@@ -50,6 +50,8 @@
   const HOME_INITIAL_VERTICAL_OFFSET = 0;
   const APARTMENT_INITIAL_ZOOM = 1;
   const APARTMENT_INITIAL_VERTICAL_OFFSET = 0;
+  const PIN_PLAN_FRACTION = 0.012; // pin size at 1x zoom, as a fraction of the plan width
+  const PIN_MIN_PX = 12;           // smallest on-screen pin size (keeps them tappable)
 
   const isApartmentPage = () => /\/apartment(?:\/|$)/i.test(window.location.pathname || "");
 
@@ -140,16 +142,32 @@
     return lists.flatMap((list) => Array.from(list.querySelectorAll(ITEM_SEL)));
   }
 
+  // Site plan pins scale with the plan (like the painted plot numbers) until
+  // they reach their natural CSS size, then hold that size on screen.
+  // Apartment pages keep the old constant-size behaviour.
+  function getPinScale(scale) {
+    const inv = 1 / scale;
+    if (isApartmentPage()) return inv;
+
+    const container = document.querySelector(MAP_CONTAINER_SEL);
+    const sample = container && container.querySelector(`${PIN_WRAP_SEL} ${PIN_SEL}:not(.block-pin)`);
+    const natural = sample ? sample.offsetWidth : 0;
+    if (!natural) return inv;
+
+    const target = Math.min(natural, Math.max(PIN_MIN_PX, PIN_PLAN_FRACTION * container.offsetWidth * scale));
+    return target / (natural * scale);
+  }
+
   function applyInversePinScale() {
     const pz = window.mapPz;
     if (!pz || typeof pz.getTransform !== "function") return;
 
     const tr = pz.getTransform();
-    const inv = 1 / (tr.scale || 1);
+    const pinScale = getPinScale(tr.scale || 1);
 
     document.querySelectorAll(`${MAP_CONTAINER_SEL} ${PIN_WRAP_SEL}`).forEach((pin) => {
       // Always include translate so pins remain centered
-      pin.style.transform = `translate(-50%, -50%) scale(${inv})`;
+      pin.style.transform = `translate(-50%, -50%) scale(${pinScale})`;
     });
   }
 
@@ -264,6 +282,8 @@
     if (!pz || typeof pz.on !== "function") return;
     applyInversePinScale();
     pz.on("zoom", applyInversePinScale);
+    // Pin size depends on the plan width, so recalc when the layout resizes
+    window.addEventListener("resize", debounce(applyInversePinScale, 100));
   }
 
   // =========================
