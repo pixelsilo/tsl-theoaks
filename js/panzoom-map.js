@@ -154,7 +154,8 @@
     const natural = sample ? sample.offsetWidth : 0;
     if (!natural) return inv;
 
-    const target = Math.min(natural, Math.max(PIN_MIN_PX, PIN_PLAN_FRACTION * container.offsetWidth * scale));
+    // sqrt: pins grow more slowly than the plan, so gaps open up as you zoom in
+    const target = Math.min(natural, Math.max(PIN_MIN_PX, PIN_PLAN_FRACTION * container.offsetWidth * Math.sqrt(scale)));
     return target / (natural * scale);
   }
 
