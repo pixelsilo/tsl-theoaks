@@ -4,7 +4,9 @@ Custom JS and CSS for https://theoaks.tidyspacelite.co.uk (Webflow site `6a7ded1
 
 Forked from `pixelsilo/tsl-3` at commit `a67876e` on 3 Nov 2026, so that The Oaks can change without affecting the other TSL sites that load tsl-3 unversioned.
 
-Files are plain scripts with no build step. They are served by jsDelivr, pinned to a git tag.
+Files are plain scripts with no build step. They are served by jsDelivr, pinned to a git tag or commit.
+
+**Live now:** commit `d21069b` (tag `v1.0.0`). jsDelivr cached a 404 for the new repo before the tag existed, so v1.0.0 is pinned by commit hash, which is just as immutable. Use tags (`@v1.0.1`, …) from the next release once `https://cdn.jsdelivr.net/gh/pixelsilo/tsl-the-oaks@v1.0.0/js/core.js` returns 200.
 
 ## Files
 
