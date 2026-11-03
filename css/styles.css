@@ -1,0 +1,35 @@
+.map-tooltip {
+  max-width: 13rem;
+  width: 13rem;
+}
+.map-tooltip .plot-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Apartment block pins (js/block-pins.js) */
+.pin.block-pin {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 0;
+  overflow: visible;
+  gap: 0.15rem;
+}
+.block-pin_circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding: 0 0.2rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.block-pin_dash {
+  position: relative;
+  width: 0.45rem;
+  height: 0.15rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
