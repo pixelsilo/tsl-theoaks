@@ -6,7 +6,7 @@ Forked from `pixelsilo/tsl-3` at commit `a67876e` on 3 Nov 2026, so that The Oak
 
 Files are plain scripts with no build step. They are served by jsDelivr, pinned to a git tag or commit.
 
-**Live now:** commit `d21069b` (tag `v1.0.0`). jsDelivr cached a 404 for the new repo before the tag existed, so v1.0.0 is pinned by commit hash, which is just as immutable. Use tags (`@v1.0.1`, …) from the next release once `https://cdn.jsdelivr.net/gh/pixelsilo/tsl-the-oaks@v1.0.0/js/core.js` returns 200.
+**Live now:** commit `309e7bc` (tag `v1.0.1`). jsDelivr isn't resolving this repo's tags yet (it cached a 404 before the first tag existed), so releases are pinned by short commit hash, which is just as immutable. Switch to tag URLs once `https://cdn.jsdelivr.net/gh/pixelsilo/tsl-the-oaks@v1.0.1/js/core.js` returns 200.
 
 ## Files
 
