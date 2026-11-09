@@ -15,7 +15,7 @@ Files are plain scripts with no build step. They are served by jsDelivr, pinned 
 | `css/styles.css` | All pages (site head) | Map tooltip and block pin styles |
 | `js/panzoom-map.js` | All pages (site footer) | Site plan pan/zoom, map pins built from the CMS lists, tooltips |
 | `js/block-pins.js` | All pages (site footer) | Renders apartment block pins as two "(15)–(23)" circles coloured by the block's `block-status` |
-| `js/map-key.js` | All pages (site footer) | Status colour key (Available / Reserved / Exchanged / Sold) in the top-left corner of every plan map (site plan and apartment block plans), built from the statuses on that map's pins; hidden until the map has a plan image. Starts open; the Key button folds it to a pill and back |
+| `js/map-key.js` | All pages (site footer) | Status colour key (Available / Reserved / Exchanged / Sold) in the top-left corner of every plan map (site plan and apartment block plans), built from the statuses on that map's pins; hidden until the map has a plan image. Starts open; the Key button folds it to a small square-edged button and back |
 | `js/navbar.js` | All pages | Nav behaviour |
 | `js/compare.js` | All pages | Compare plots |
 | `js/core.js` | All pages | 3D Vista relopen, price formatting, form success messages |

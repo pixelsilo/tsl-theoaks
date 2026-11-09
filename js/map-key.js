@@ -8,7 +8,7 @@
 // Only statuses that appear on that map's pins are listed, in the order below,
 // and the key only shows once the map has a plan image (the apartment blocks
 // have no level plan yet, so their maps are blank).
-// The key starts open; the "Key" button folds it down to a pill and back.
+// The key starts open; the "Key" button folds it down to a small square-edged button and back.
 (() => {
   const MAP_SEL = '.map';
   const DOT_SEL = '.map-pin .availability_dot';

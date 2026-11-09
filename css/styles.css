@@ -36,7 +36,7 @@
 
 /* Site plan status key (js/map-key.js)
    Square, white, navy outline and soft shadow, to match the plot cards.
-   The "Key" button folds it down to a pill (.is-collapsed) and back. */
+   The "Key" button folds it down to a small square-edged button (.is-collapsed) and back. */
 .map-key {
   position: absolute;
   top: 1rem;
@@ -111,11 +111,10 @@
   overflow: hidden;
 }
 
-/* Folded: just a "Key ⌄" pill */
+/* Folded: just a square-edged "Key ⌄" button */
 .map-key.is-collapsed {
   min-width: 0;
   padding: 0;
-  border-radius: 999px;
 }
 .map-key.is-collapsed .map-key_toggle {
   margin: 0;
