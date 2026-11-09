@@ -33,3 +33,73 @@
   border-radius: 1rem;
   overflow: hidden;
 }
+
+/* Site plan status key (js/map-key.js)
+   Square, white, navy outline and soft shadow, to match the plot cards. */
+.map-key {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+  min-width: 8.5rem;
+  padding: 0.75rem 0.9rem 0.8rem;
+  background: #fff;
+  border: 1px solid #00374f;
+  border-radius: 0;
+  box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.3);
+  color: #00374f;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  pointer-events: none;
+}
+.map-key_title {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #a24657;
+  font-family: quincy-cf, serif;
+  font-size: 1rem;
+  line-height: 1;
+}
+.map-key_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.map-key_item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.map-key_swatch {
+  position: relative;
+  flex: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  .map-key {
+    top: 0.5rem;
+    left: 0.5rem;
+    min-width: 0;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  .map-key_title {
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.3rem;
+    font-size: 0.85rem;
+  }
+  .map-key_list {
+    gap: 0.25rem;
+  }
+  .map-key_swatch {
+    width: 0.65rem;
+    height: 0.65rem;
+  }
+}
