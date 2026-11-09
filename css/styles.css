@@ -35,14 +35,15 @@
 }
 
 /* Site plan status key (js/map-key.js)
-   Square, white, navy outline and soft shadow, to match the plot cards. */
+   Square, white, navy outline and soft shadow, to match the plot cards.
+   The "Key" button folds it down to a pill (.is-collapsed) and back. */
 .map-key {
   position: absolute;
   top: 1rem;
   left: 1rem;
   z-index: 50;
   min-width: 8.5rem;
-  padding: 0.75rem 0.9rem 0.8rem;
+  padding: 0.6rem 0.9rem 0.8rem;
   background: #fff;
   border: 1px solid #00374f;
   border-radius: 0;
@@ -53,13 +54,37 @@
   line-height: 1.2;
   pointer-events: none;
 }
-.map-key_title {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.4rem;
+.map-key_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 100%;
+  margin: 0 0 0.5rem;
+  padding: 0 0 0.4rem;
+  background: none;
+  border: 0;
   border-bottom: 1px solid #a24657;
+  border-radius: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+.map-key_toggle:focus-visible {
+  outline: 2px solid #a24657;
+  outline-offset: 3px;
+}
+.map-key_title {
   font-family: quincy-cf, serif;
   font-size: 1rem;
   line-height: 1;
+}
+.map-key_chevron {
+  flex: none;
+  transition: transform 0.2s ease;
 }
 .map-key_list {
   display: flex;
@@ -68,6 +93,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.map-key_list[hidden] {
+  display: none;
 }
 .map-key_item {
   display: flex;
@@ -82,17 +110,36 @@
   border-radius: 50%;
   overflow: hidden;
 }
+
+/* Folded: just a "Key ⌄" pill */
+.map-key.is-collapsed {
+  min-width: 0;
+  padding: 0;
+  border-radius: 999px;
+}
+.map-key.is-collapsed .map-key_toggle {
+  margin: 0;
+  padding: 0.45rem 0.85rem 0.45rem 1rem;
+  border-bottom: 0;
+}
+.map-key.is-collapsed .map-key_chevron {
+  transform: rotate(180deg);
+}
+
 @media screen and (max-width: 767px) {
   .map-key {
     top: 0.5rem;
     left: 0.5rem;
     min-width: 0;
-    padding: 0.5rem 0.6rem;
+    padding: 0.45rem 0.6rem 0.55rem;
     font-size: 0.7rem;
   }
-  .map-key_title {
+  .map-key_toggle {
+    min-height: 1.75rem;
     margin-bottom: 0.35rem;
     padding-bottom: 0.3rem;
+  }
+  .map-key_title {
     font-size: 0.85rem;
   }
   .map-key_list {
@@ -101,5 +148,9 @@
   .map-key_swatch {
     width: 0.65rem;
     height: 0.65rem;
+  }
+  .map-key.is-collapsed .map-key_toggle {
+    min-height: 2rem;
+    padding: 0.35rem 0.7rem 0.35rem 0.85rem;
   }
 }
