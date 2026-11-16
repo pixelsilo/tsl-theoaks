@@ -101,6 +101,11 @@
       () => {
         tickDefault();
         syncBlocks();
+        // Finsweet can apply URL filters just after this callback, so check again
+        setTimeout(() => {
+          tickDefault();
+          syncBlocks();
+        }, 800);
       },
     ]);
   };
