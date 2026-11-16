@@ -17,6 +17,7 @@ Files are plain scripts with no build step. They are served by jsDelivr, pinned 
 | `js/block-pins.js` | All pages (site footer) | Renders apartment block pins as two "(15)–(23)" circles coloured by the block's `block-status` |
 | `js/map-key.js` | All pages (site footer) | Status colour key (Available / Reserved / Exchanged / Sold) in the top-left corner of every plan map (site plan and apartment block plans), built from the statuses on that map's pins; hidden until the map has a plan image. Starts open; the Key button folds it to a small square-edged button and back |
 | `js/screensaver.js` | All pages except /admin and /screensaver (site footer) | After 10 minutes idle, goes to /screensaver (the flythrough). Ported from tsl-3/screensaver.js |
+| `js/availability-filter.js` | All pages with the plot filters (site footer) | Ticks "Available" in the Finsweet filters on load (unless the URL already has an availability filter), and applies the availability checkboxes to the apartment block list, which Finsweet doesn't manage |
 | `js/navbar.js` | All pages | Nav behaviour |
 | `js/compare.js` | All pages | Compare plots |
 | `js/core.js` | All pages | 3D Vista relopen, price formatting, form success messages |
