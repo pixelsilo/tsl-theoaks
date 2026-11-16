@@ -62,9 +62,21 @@
   // Every fresh load or reload starts on "Available" only, even if the URL
   // (fs-list-showquery) carries other availability values from earlier use.
   // Back/forward keeps whatever the visitor had chosen.
+  const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+  const keepChoice = !!nav && nav.type === 'back_forward';
+
+  // Drop availability values from the URL before Finsweet reads them on init
+  if (!keepChoice) {
+    const url = new URL(location.href);
+    const keys = [...url.searchParams.keys()].filter((k) => k.startsWith('availability'));
+    if (keys.length) {
+      keys.forEach((k) => url.searchParams.delete(k));
+      history.replaceState(history.state, '', url);
+    }
+  }
+
   const tickDefault = () => {
-    const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-    if (nav && nav.type === 'back_forward') return;
+    if (keepChoice) return;
     boxes().forEach((box) => {
       const want = (box.getAttribute('fs-list-value') || '').toLowerCase() === DEFAULT_STATUS;
       // Finsweet's custom checkboxes are driven by the label, so click it
