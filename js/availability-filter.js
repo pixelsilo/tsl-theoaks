@@ -1,12 +1,14 @@
 //--- AVAILABILITY FILTER
 // 1. Sets the Finsweet availability filter to "Available" only when the page
-//    loads (back/forward keeps the visitor's choice).
+//    loads, or to nothing on apartment block pages (back/forward keeps the
+//    visitor's choice).
 // 2. Applies the availability checkboxes to the apartment block list, which
 //    Finsweet doesn't manage. A block shows when no availability box is ticked,
 //    or when its block-status is one of the ticked values. Hidden blocks are
 //    taken out of the list, so panzoom-map.js rebuilds the map pins without them.
 (() => {
-  const DEFAULT_STATUS = 'available';
+  // Apartment block pages start with no availability ticked (show every unit)
+  const DEFAULT_STATUS = /^\/apartment(\/|$)/.test(location.pathname) ? null : 'available';
   const BOX_SEL = 'input[fs-list-field="availability"]';
   const BLOCK_LIST_SEL = '[pin="list"]:not([fs-list-element])';
   const ITEM_SEL = '.plot_ci';
