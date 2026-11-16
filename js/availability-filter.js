@@ -39,6 +39,26 @@
     });
   };
 
+  // A checkbox added through the Webflow API comes out as a native box (the
+  // "custom" style can't be set there). Give it the same overlay markup as its
+  // custom-styled siblings so it looks and behaves like them.
+  const matchCustomCheckboxes = () => {
+    boxes().forEach((input) => {
+      const label = input.closest('label.w-checkbox');
+      if (!label || label.querySelector('.w-checkbox-input--inputType-custom')) return;
+      const sample = label.parentElement?.querySelector('.w-checkbox-input--inputType-custom');
+      if (!sample) return;
+      const overlay = document.createElement('div');
+      overlay.className = sample.className.replace(/\bw--redirected-(checked|focus)\b/g, '').trim();
+      input.before(overlay);
+      input.className = '';
+      input.style.cssText = 'opacity:0;position:absolute;z-index:-1';
+      const sync = () => overlay.classList.toggle('w--redirected-checked', input.checked);
+      input.addEventListener('change', sync);
+      sync();
+    });
+  };
+
   const tickDefault = () => {
     const urlHasFilter = [...new URLSearchParams(location.search).keys()].some((k) => k.startsWith('availability'));
     if (urlHasFilter || ticked().length) return;
@@ -50,6 +70,7 @@
 
   const init = () => {
     if (!boxes().length) return;
+    matchCustomCheckboxes();
     document.addEventListener('change', (e) => {
       if (e.target.matches && e.target.matches(BOX_SEL)) syncBlocks();
     });
