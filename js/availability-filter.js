@@ -1,6 +1,6 @@
 //--- AVAILABILITY FILTER
-// 1. Ticks "Available" in the Finsweet filters when the page loads, unless the
-//    URL already carries an availability filter (fs-list-showquery).
+// 1. Sets the Finsweet availability filter to "Available" only when the page
+//    loads (back/forward keeps the visitor's choice).
 // 2. Applies the availability checkboxes to the apartment block list, which
 //    Finsweet doesn't manage. A block shows when no availability box is ticked,
 //    or when its block-status is one of the ticked values. Hidden blocks are
@@ -59,13 +59,17 @@
     });
   };
 
+  // Every fresh load or reload starts on "Available" only, even if the URL
+  // (fs-list-showquery) carries other availability values from earlier use.
+  // Back/forward keeps whatever the visitor had chosen.
   const tickDefault = () => {
-    const urlHasFilter = [...new URLSearchParams(location.search).keys()].some((k) => k.startsWith('availability'));
-    if (urlHasFilter || ticked().length) return;
-    const box = boxes().find((b) => (b.getAttribute('fs-list-value') || '').toLowerCase() === DEFAULT_STATUS);
-    if (!box) return;
-    // Finsweet's custom checkboxes are driven by the label, so click it
-    (box.closest('label') || box).click();
+    const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    if (nav && nav.type === 'back_forward') return;
+    boxes().forEach((box) => {
+      const want = (box.getAttribute('fs-list-value') || '').toLowerCase() === DEFAULT_STATUS;
+      // Finsweet's custom checkboxes are driven by the label, so click it
+      if (box.checked !== want) (box.closest('label') || box).click();
+    });
   };
 
   const init = () => {

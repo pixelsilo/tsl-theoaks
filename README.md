@@ -6,7 +6,7 @@ Forked from `pixelsilo/tsl-3` at commit `a67876e` on 3 Nov 2026, so that The Oak
 
 Files are plain scripts with no build step. They are served by jsDelivr, pinned to a git tag or commit.
 
-**Current release:** tag `v1.5.1` (staging, 16 Nov 2026; live is v1.4.0 until published). The repo was renamed from `tsl-the-oaks` to `tsl-theoaks` on 3 Nov 2026, because jsDelivr had cached a "no versions" result for the old name. Always use the `tsl-theoaks` URLs.
+**Current release:** tag `v1.5.2` (staging, 16 Nov 2026; live is v1.4.0 until published). The repo was renamed from `tsl-the-oaks` to `tsl-theoaks` on 3 Nov 2026, because jsDelivr had cached a "no versions" result for the old name. Always use the `tsl-theoaks` URLs.
 
 ## Files
 
@@ -17,7 +17,7 @@ Files are plain scripts with no build step. They are served by jsDelivr, pinned 
 | `js/block-pins.js` | All pages (site footer) | Renders apartment block pins as two "(15)–(23)" circles coloured by the block's `block-status` |
 | `js/map-key.js` | All pages (site footer) | Status colour key (Available / Reserved / Exchanged / Sold) in the top-left corner of every plan map (site plan and apartment block plans), built from the statuses on that map's pins; hidden until the map has a plan image. Starts open; the Key button folds it to a small square-edged button and back |
 | `js/screensaver.js` | All pages except /admin and /screensaver (site footer) | After 10 minutes idle, goes to /screensaver (the flythrough). Ported from tsl-3/screensaver.js |
-| `js/availability-filter.js` | All pages with the plot filters (site footer) | Ticks "Available" in the Finsweet filters on load (unless the URL already has an availability filter), and applies the availability checkboxes to the apartment block list, which Finsweet doesn't manage |
+| `js/availability-filter.js` | All pages with the plot filters (site footer) | Sets the Finsweet availability filter to "Available" only on every load or reload (back/forward keeps the choice), and applies the availability checkboxes to the apartment block list, which Finsweet doesn't manage |
 | `js/navbar.js` | All pages | Nav behaviour |
 | `js/compare.js` | All pages | Compare plots |
 | `js/core.js` | All pages | 3D Vista relopen, price formatting, form success messages |
